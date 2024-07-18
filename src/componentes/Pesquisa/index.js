@@ -25,7 +25,6 @@ const Subtitulo = styled.h3`
 `
 
 function Pesquisa() {
-    const {}
     return (
         <PesquisaContainer>
             <Titulo>Já sabe por onde começar?</Titulo>

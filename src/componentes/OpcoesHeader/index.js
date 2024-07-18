@@ -21,8 +21,8 @@ function OpcoesHeader() {
   return (
     <Opcoes>
       {
-        textoOpcoes.map((texto) => (
-          <Opcao className='opcao'><p>{texto}</p></Opcao>
+        textoOpcoes.map((texto, index) => (
+          <Opcao key={index} className='opcao'><p>{texto}</p></Opcao>
         ))
       }
     </Opcoes>

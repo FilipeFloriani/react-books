@@ -18,8 +18,8 @@ function IconesHeader() {
   return (
     <IconesContainer>
       {
-        icones.map((icone) => (
-          <Icone><img src={icone} alt='' /></Icone>
+        icones.map((icone, index) => (
+          <Icone key={index}><img src={icone} alt='' /></Icone>
         ))
       }
     </IconesContainer>
