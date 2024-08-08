@@ -4,7 +4,6 @@ import { useState } from "react"
 import { livros } from "./dadosPesquisa"
 
 const PesquisaContainer = styled.section`
-    background-image: linear-gradient(90deg, #002F52 35%, #326589 165%);
     color: #FFF;
     text-align: center;
     padding: 80px 0;
@@ -25,15 +24,44 @@ const Subtitulo = styled.h3`
     margin-bottom: 40px;
 `
 
+const Resultado = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+
+    p {
+        width: 200px;
+    }
+
+    img {
+        width: 150px;
+    }
+
+    &:hover {
+        border: 1px solid white;
+    }
+`
+
+const ResultadosContainer = styled.div`
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 20px;
+   width: 100%;
+   margin-top: 20px;
+`;
+
 function Pesquisa() {
 
-    const [livroPesquisado, setLivrosPesquisados] = useState([])
-    console.log(livroPesquisado)
+    const [livrosPesquisados, setLivrosPesquisados] = useState([])
+
     return (
         <PesquisaContainer>
             <Titulo>Já sabe por onde começar?</Titulo>
             <Subtitulo>Encontre o que você procura</Subtitulo>
-            <Input 
+            <Input
                 placeholder="O que você está buscando?"
                 onBlur={evento => {
                     const textoDigitado = evento.target.value
@@ -42,7 +70,19 @@ function Pesquisa() {
                     setLivrosPesquisados(resultadoPesquisa)
                 }}
             />
-            
+            {livrosPesquisados.length > 0 ?
+                <ResultadosContainer>
+                    {(livrosPesquisados.map(livro => (
+                        <Resultado>
+                            <p>{livro.nome}</p>
+                            <img src={livro.src} alt="livro.nome" />
+                        </Resultado>
+                    ))
+                    )}
+                </ResultadosContainer>
+                : (
+                    <p>Nenhum resultado para a busca :(</p>
+                )}
         </PesquisaContainer>
     )
 }

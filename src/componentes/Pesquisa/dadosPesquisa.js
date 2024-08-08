@@ -8,7 +8,7 @@ export const livros = [
     },
     {
         id: 2,
-        nome: 'Marley e Eu',
+        nome: 'Marley e Eu - Descendo a Ladeira',
         src: imagemLivro
     },
     {
